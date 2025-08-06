@@ -1,0 +1,1 @@
+# 2025-project-10000hours-rule
