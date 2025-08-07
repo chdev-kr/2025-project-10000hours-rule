@@ -2,9 +2,19 @@
 /* 1. 폰트 사이즈가 계속 적용이 안됨 */
 
 /* fonts */
+/* url이 동일하게 GmarketSansMedium으로 설정되어 있었음. */
+/* 
+  - Figma는 TTF/OTF 형태의 데스크톱 폰트를 사용
+  - 웹은 WOFF/WOFF2 포맷의 경량화된 웹 전용 폰트를 사용
+  => 이 과정에서 일부 굵기 표현 방식, 렌더링 방식 등이 달라질 수 있음
+
+  => 프로젝트 성격, 배포 방식에 따라 달라질 수 있지만, 로컬에 포함해서 사용하는게 더 안정적!
+    - 외부 의존성 없음
+    - 정확히 원하는 폰트 파일 사용 가능
+*/
 @font-face {
   font-family: "GmarketSans";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff")
     format("woff");
   font-weight: 400;
   font-style: normal;
@@ -20,7 +30,7 @@
 
 @font-face {
   font-family: "GmarketSans";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff")
     format("woff");
   font-weight: 700;
   font-style: normal;
@@ -147,7 +157,9 @@ body {
 /* 폼 섹션 */
 .form-section {
   max-width: 771px;
-  margin: 0 auto 12em;
+  /* 오타 */
+  /* margin: 0 auto 12em; */
+  margin: 0 auto 12rem;
 }
 
 .form-section form {
@@ -241,6 +253,7 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
 
+  /* absolute는 기준점이 필요합니다!! => 보통 부모 요소를 기준으로 삼음 */
   position: absolute;
   left: 90%;
   top: 1.4rem;
