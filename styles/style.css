@@ -14,33 +14,29 @@
 */
 @font-face {
   font-family: "GmarketSans";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff")
-    format("woff");
+  src: url("../fonts/GmarketSansLight.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "GmarketSans";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
-    format("woff");
+  src: url("../fonts/GmarketSansMedium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: "GmarketSans";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff")
-    format("woff");
+  src: url("../fonts/GmarketSansBold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "OTEnjoystoriesBA";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/OTEnjoystoriesBA.woff")
-    format("woff");
-  font-weight: 700;
+  font-family: "Noto Sans KR";
+  src: url("../fonts/NotoSansKR-VariableFont_wght.ttf format.woff");
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -107,12 +103,12 @@ body {
 }
 
 /* 인용구 */
-.quote {
-  font-family: "OTEnjoystoriesBA", sans-serif;
-  font-size: 3.6rem;
-  font-weight: 700;
-  color: var(--yellow);
-  margin-bottom: 8rem;
+.quote-img {
+  width: 486px !important;
+  height: auto;
+  max-width: 564px;
+  margin: 0 auto;
+  display: block;
 }
 
 /* 설명 섹션 */
@@ -129,11 +125,27 @@ body {
 }
 
 /* 양쪽 따옴표 */
-.description img {
-  width: 3.6rem;
-  height: 3.2rem;
+.description::before {
+  content: "";
+  display: inline-block;
+  width: 36px;
+  height: 32px;
+
+  background-image: url("../images/left.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
+.description::after {
+  content: "";
+  display: inline-block;
+  width: 36px;
+  height: 32px;
+
+  background-image: url("../images/right.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .description p {
   font-family: var(--font-main);
   font-size: 1.8rem;
@@ -219,6 +231,7 @@ body {
 
 .calc-btn {
   display: flex;
+  position: relative;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -234,12 +247,10 @@ body {
   border: none;
   cursor: pointer;
 
-  font-family: "GmarketSans", sans-serif;
-  font-style: normal;
   font-weight: 500;
   font-size: 24px;
-  line-height: 24px;
-  color: #5b2386;
+
+  color: var(--bg-purple);
   text-align: center;
 }
 
@@ -253,12 +264,12 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
 
-  /* absolute는 기준점이 필요합니다!! => 보통 부모 요소를 기준으로 삼음 */
   position: absolute;
-  left: 90%;
+  right: -71px; /* 버튼 오른쪽에 위치 */
   top: 1.4rem;
   margin-left: 0.7rem;
 }
+
 .icon {
   width: 64px;
   height: 72px;
@@ -399,33 +410,7 @@ body {
   border-radius: 2rem;
 }
 
-.modal-content {
-  font-family: "OTEnjoystoriesBA", sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  width: 50.8rem;
-  height: 65.6rem;
-}
-
-.modal-title {
-  font-size: 9.6rem;
-  font-weight: 700;
-  line-height: 10.6rem;
-  color: #5b2386;
-  margin: 0;
-}
-
-.modal-subtext {
-  font-size: 3.6rem;
-  font-weight: 700;
-  line-height: 4rem;
-  color: #5b2386;
-  text-align: center;
-}
-
-.modal-content img {
+.cheering-licat {
   margin-top: 4rem;
   width: 43.8rem;
   height: 34.2rem;
@@ -441,7 +426,6 @@ body {
   background: #fcee21;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.15);
   border-radius: 1.2rem;
-  font-family: "GmarketSans";
   font-weight: 500;
   font-size: 2.4rem;
   line-height: 2.4rem;

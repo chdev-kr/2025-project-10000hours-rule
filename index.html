@@ -11,25 +11,21 @@
     <main class="container">
       <header class="title-section">
         <h1 class="a11y-hidden">1만 시간의 법칙</h1>
-        <!-- img alt를 생략해도 됩니다. -->
-        <img src="./images/title.png" alt="1만 시간의 법칙" class="title-img" />
-        <!-- 한 번만 사용되는 폰트는 이미지로 사용하는게 리소스 절약! -->
-        <blockquote class="quote">
-          "연습은 어제의 당신보다 당신을 더 낫게 만든다"
-        </blockquote>
+        <img src="./images/title.png" class="title-img" />
+        <img
+          src="./images/quote.png"
+          alt="연습은 어제의 당신보다 당신을 더 낫게 만든다"
+          class="quote-img"
+        />
       </header>
 
       <section class="description">
         <h2 class="a11y-hidden">1만 시간의 법칙 설명</h2>
-        <!-- 의미없이 꾸밈을 위한 이미지 요소는 가상 요소 또는 background 사용하기! -->
-        <img src="./images/left.png" alt="좌 따옴표" />
         <p>
-          <!-- 강조를 위한 부분은 strong 태그 -->
-          <span class="highlight">1만 시간의 법칙</span>은<br />
+          <strong class="highlight">1만 시간의 법칙</strong>은<br />
           어떤 분야의 전문가가 되기 위해서는<br />
           최소한 1만 시간의 훈련이 필요하다는 법칙이다.
         </p>
-        <img src="./images/right.png" alt="우 따옴표" />
       </section>
 
       <section class="form-section">
@@ -37,20 +33,17 @@
         <form>
           <div class="form-row">
             <label for="field">나는</label>
-            <!-- input에 id가 없어서 label과 연결이 되고 있지 않습니다! -->
-            <input type="text" placeholder="예)프로그래밍" />
-            <!-- p 태그 -->
-            <span class="normal-text">전문가가 될 것이다.</span>
+            <input type="text" id="field" placeholder="예)프로그래밍" />
+            <p class="normal-text">전문가가 될 것이다.</p>
           </div>
 
           <div class="form-row">
             <label for="time">그래서 앞으로 매일 하루에</label>
-            <input type="number" placeholder="예)5시간" />
-            <!-- p 태그 -->
-            <span class="normal-text">시간씩 훈련할 것이다.</span>
+            <input type="number" id="time" placeholder="예)5시간" />
+            <p class="normal-text">시간씩 훈련할 것이다.</p>
           </div>
 
-          <!-- 버튼을 감싼 이유? -->
+          <!-- 버튼을 감싼 이유?: 버튼 정렬을 위해서 -->
           <div class="calc-btn-container">
             <button type="button" class="calc-btn" alt="계산하기">
               나는 며칠 동안 훈련을 해야 1만 시간이 될까?
@@ -60,45 +53,25 @@
 
         <div class="result">
           <div class="result-row">
-            <!-- span -> p -->
-            <span>당신은</span>
-            <!-- strong -->
-            <span class="highlight">프로그래밍</span>
-            <span>전문가가 되기 위해서</span>
+            <p>당신은</p>
+            <strong class="highlight">프로그래밍</strong>
+            <p>전문가가 되기 위해서</p>
           </div>
           <div class="result-row">
-            <span>대략</span>
-            <span class="highlight">5110</span>
-            <span>일 이상 훈련하셔야 합니다! :)</span>
+            <p>대략</p>
+            <p class="highlight">5110</p>
+            <p>일 이상 훈련하셔야 합니다! :)</p>
           </div>
         </div>
       </section>
 
       <section class="cta-btn">
         <h3 class="a11y-hidden">CTA</h3>
-        <input type="checkbox" id="modal-toggle" class="modal-toggle" hidden />
-
         <!-- 모달 버튼 -->
-        <!-- 라벨 => 모달 표시를 위해? -->
+        <!-- 라벨 => 모달 표시를 위해 -->
+        <input type="checkbox" id="modal-toggle" class="modal-toggle" hidden />
         <label for="modal-toggle" class="go-btn">훈련하러 가기 GO! GO!</label>
         <a href="#" class="share-btn">공유하기</a>
-
-        <div class="modal-container">
-          <div class="modal-content">
-            <!-- 순서상 h4? => 모달은 밖으로 빼도 됩니다! -->
-            <h2 class="a11y-hidden">응원 메시지</h2>
-            <p class="modal-title">화이팅!!♥♥♥</p>
-            <p class="modal-subtext">당신의 꿈을 응원합니다!</pc>
-            <img
-              src="./images/라이캣-img.png"
-              alt="응원하는 모습의 라이캣 캐릭터"
-            />
-            <!-- type="button" -->
-            <button class="modal-btn">
-              종료하고 진짜 훈련하러 가기 GO!GO!
-            </button>
-          </div>
-        </div>
       </section>
     </main>
 
@@ -111,4 +84,15 @@
       </p>
     </footer>
   </body>
+
+  <div class="modal-container">
+    <h4 class="a11y-hidden">응원 메시지</h4>
+    <img src="./images/modal-text.png" alt="화이팅! 당신의 꿈을 응원합니다!" />
+    <img
+      class="cheering-licat"
+      src="./images/라이캣-img.png"
+      alt="응원하는 모습의 라이캣 캐릭터"
+    />
+    <button class="modal-btn">종료하고 진짜 훈련하러 가기 GO!GO!</button>
+  </div>
 </html>
