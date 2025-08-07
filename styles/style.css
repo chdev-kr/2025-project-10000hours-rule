@@ -289,7 +289,7 @@ body {
 /* CTA 버튼 */
 .cta-btn {
   max-width: 570px;
-  margin: 12rem auto 8rem;
+  margin: 0 auto 8rem;
   display: flex;
   justify-content: center;
   align-items: center;
