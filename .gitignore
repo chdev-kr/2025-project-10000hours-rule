@@ -1,4 +1,6 @@
 # 운영체제 파일
+# Editor and system files to ignore
+.vscode/
 .DS_Store
 *.DS_Store
 Thumbs.db         # Windows 이미지 미리보기 파일
