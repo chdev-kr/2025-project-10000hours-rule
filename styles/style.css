@@ -11,6 +11,22 @@
 }
 
 @font-face {
+  font-family: "GmarketSans";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GmarketSans";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
   font-family: "OTEnjoystoriesBA";
   src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/OTEnjoystoriesBA.woff")
     format("woff");
@@ -113,7 +129,7 @@ body {
   font-family: var(--font-main);
   font-size: 1.8rem;
   font-weight: 400;
-  line-height: 100%;
+  line-height: 1.5;
   color: var(--text-white);
   text-align: center;
   vertical-align: middle;
@@ -124,7 +140,6 @@ body {
   font-family: var(--font-main);
   font-size: 2.4rem;
   font-weight: 700;
-  line-height: 100%;
   color: var(--text-white);
   text-align: center;
   vertical-align: middle;
@@ -192,27 +207,49 @@ body {
 }
 
 .calc-btn {
-  width: 567px;
-  max-width: 100%;
-  border: none;
-  background: none;
-  cursor: pointer;
-  padding: 0;
   display: flex;
+  flex-direction: row;
+  align-items: center;
   justify-content: center;
+
+  width: 567px;
+  height: 64px;
+  padding: 20px 50px;
+  gap: 10px;
+
+  background: #fcee21;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+
+  font-family: "GmarketSans", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 24px;
+  color: #5b2386;
+  text-align: center;
 }
 
-.btn-image {
-  width: 100%;
-  height: auto;
+.calc-btn::after {
+  content: "";
   display: block;
-  transition: all 0.1s ease;
-}
+  width: 64px;
+  height: 72px;
+  background-image: url("../images/icon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 
+  position: absolute;
+  left: 90%;
+  top: 14px;
+  margin-left: 7px;
+}
 .icon {
   width: 64px;
   height: 72px;
-  object-fit: contain;
+  object-fit: cover;
   margin-top: 14px; /* 버튼보다 14px 아래 */
 }
 /* 결과 섹션 */
@@ -311,4 +348,41 @@ body {
   max-width: 348px;
   margin: 0 auto;
   margin-bottom: 12rem;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: white;
+  color: black;
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 400px;
+  width: 80%;
+  text-align: center;
+  position: relative;
+}
+
+/* 닫기 버튼 */
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+/* 체크되었을 때 모달 표시 */
+.modal-toggle:checked + .cta-btn + .modal {
+  display: flex;
 }
