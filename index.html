@@ -3,39 +3,89 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>문서 제목</title>
+    <title>1만 시간의 법칙</title>
     <link rel="stylesheet" href="./styles/reset.css" />
     <link rel="stylesheet" href="./styles/style.css" />
   </head>
   <body>
-    <h1 class="a11y-hidden">1만 시간의 법칙</h1>
-    <img src="./images/title.png" alt="" />
-    <p>"연습은 어제의 당신보다 당신을 더 낫게 만든다</p>
-    <p>
-      <span>1만 시간의 법칙</span>은 어떤 분야의 전문가가 되기 위해서는 최소한
-      1만 시간의 훈련이 필요하다는 법칙이다.
-    </p>
-    <h2>전문가가 되기 위한 1만 시간 계산</h2>
-    <div>
-      나는 <input type="text" placeholder="예)프로그래밍" />전문가가 될
-      것이다<br />그래서 앞으로 매일 하루에
-      <input type="text" placeholder="예)5시간" />시간씩 훈련할 것이다.
+    <main class="container">
+      <header class="title-section">
+        <h1 class="a11y-hidden">1만 시간의 법칙</h1>
+        <img src="./images/title.png" alt="1만 시간의 법칙" class="title-img" />
+        <blockquote class="quote">
+          "연습은 어제의 당신보다 당신을 더 낫게 만든다"
+        </blockquote>
+      </header>
 
-      <button>나는 며칠 동안 훈련을 해야 1만 시간이 될까?</button>
+      <section class="description">
+        <img src="./images/left.png" alt="왼쪽 따옴표" />
+        <p>
+          <span class="highlight">1만 시간의 법칙</span>은<br />
+          어떤 분야의 전문가가 되기 위해서는<br />
+          최소한 1만 시간의 훈련이 필요하다는 법칙이다.
+        </p>
+        <img src="./images/right.png" alt="오른쪽 따옴표" />
+      </section>
+
+      <section class="form-section">
+        <h2 class="a11y-hidden">1만 시간 계산기</h2>
+        <form>
+          <div class="form-row">
+            <label for="field">나는</label>
+            <input type="text" placeholder="예)프로그래밍" />
+            <span class="normal-text">전문가가 될 것이다.</span>
+          </div>
+
+          <div class="form-row">
+            <label for="time">그래서 앞으로 매일 하루에</label>
+            <input type="number" placeholder="예)5시간" />
+            <span class="normal-text">시간씩 훈련할 것이다.</span>
+          </div>
+
+          <div class="calc-btn-container">
+            <button type="button" class="calc-btn">
+              <img
+                src="./images/color=yellow.png"
+                alt="계산하기 버튼"
+                class="btn-image"
+              />
+            </button>
+            <img
+              class="icon"
+              src="./images/icon.png"
+              alt="커서 모양의 아이콘"
+            />
+          </div>
+        </form>
+
+        <div class="result">
+          <div class="result-row">
+            <span>당신은</span>
+            <span class="highlight">프로그래밍</span>
+            <span>전문가가 되기 위해서</span>
+          </div>
+          <div class="result-row">
+            <span>대략</span>
+            <span class="highlight">5110</span>
+            <span>일 이상 훈련하셔야 합니다! :)</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-btn">
+        <h3 class="a11y-hidden">CTA</h3>
+        <button class="go-btn">훈련하러 가기 GO! GO!</button>
+        <a href="#" class="share-btn">공유하기</a>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <h2 class="a11y-hidden">위니브 저작권 안내</h2>
+      <img src="./images/logo-m.png" alt="위니브 로고" class="footer-logo" />
       <p>
-        당신은 <span> 프로그래밍 </span>전문가가 되기 위해서 대략
-        <span> 5110</span>일 이상 훈련하셔야 합니다! :)
+        본 서비스 내 이미지 및 콘텐츠의 저작권은 주식회사 위니브에 있습니다.<br />
+        수정 및 재배포, 무단 도용 시 법적인 문제가 발생할 수 있습니다.
       </p>
-      <h3>훈련하기와 공유하기 버튼</h3>
-      <button>훈련하러 가기 GO! GO!</button>
-      <a href="#">공유하기</a>
-    </div>
+    </footer>
   </body>
-  <footer>
-    <img src="" alt="위니브 로고" />
-    <p>
-      본 서비스 내 이미지 및 콘텐츠의 저작권은 주식회사 위니브에 있습니다. 수정
-      및 재배포, 무단 도용 시 법적인 문제가 발생할 수 있습니다.
-    </p>
-  </footer>
 </html>
