@@ -5,7 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>1만 시간의 법칙</title>
     <link rel="stylesheet" href="./styles/reset.css" />
-    <link rel="stylesheet" href="./styles/style.css" />
+    <!-- 기본 스타일 -->
+    <link
+      rel="stylesheet"
+      href="./styles/style.css"
+      media="screen and (max-width: 1920px)"
+    />
+    <!-- 화면 폭이 360px 이하일 때만 적용 -->
+    <link
+      rel="stylesheet"
+      href="./styles/mobile.css"
+      media="screen and (max-width: 360px)"
+    />
   </head>
   <body>
     <main class="container">
@@ -43,34 +54,36 @@
             <p class="normal-text">시간씩 훈련할 것이다.</p>
           </div>
 
-          <!-- 버튼을 감싼 이유?: 버튼 정렬을 위해서 -->
-          <div class="calc-btn-container">
-            <button type="button" class="calc-btn" alt="계산하기">
-              나는 며칠 동안 훈련을 해야 1만 시간이 될까?
-            </button>
-          </div>
+          <button type="button" class="calc-btn" alt="계산하기">
+            <span class="enter">나는 며칠 동안 훈련을 해야</span>
+            <span>1만 시간이 될까?</span>
+          </button>
         </form>
 
         <div class="result">
           <div class="result-row">
-            <p>당신은</p>
-            <strong class="highlight">프로그래밍</strong>
-            <p>전문가가 되기 위해서</p>
+            <p>
+              당신은
+              <strong class="highlight">프로그래밍</strong>
+              전문가가 되기 위해서
+            </p>
           </div>
           <div class="result-row">
-            <p>대략</p>
-            <p class="highlight">5110</p>
-            <p>일 이상 훈련하셔야 합니다! :)</p>
+            <p>
+              대략
+              <strong class="highlight">5110</strong>
+              일 이상 훈련하셔야 합니다! :)
+            </p>
           </div>
         </div>
       </section>
 
       <section class="cta-btn">
         <h3 class="a11y-hidden">CTA</h3>
-        <!-- 모달 버튼 -->
-        <!-- 라벨 => 모달 표시를 위해 -->
-        <input type="checkbox" id="modal-toggle" class="modal-toggle" hidden />
-        <label for="modal-toggle" class="go-btn">훈련하러 가기 GO! GO!</label>
+        <!-- 모달 열기 버튼 -->
+        <button id="showDialogBtn" class="go-btn" type="button">
+          훈련하러 가기 GO! GO!
+        </button>
         <a href="#" class="share-btn">공유하기</a>
       </section>
     </main>
@@ -83,19 +96,33 @@
         수정 및 재배포, 무단 도용 시 법적인 문제가 발생할 수 있습니다.
       </p>
     </footer>
-  </body>
 
-  <div class="modal-container">
-    <h4 class="a11y-hidden">응원 메시지</h4>
-    <div
-      class="cheering-text"
-      aria-label="화이팅! 당신의 꿈을 응원합니다!"
-    ></div>
-    <img
-      class="cheering-licat"
-      src="./images/라이캣-img.png"
-      alt="응원하는 모습의 라이캣 캐릭터"
-    />
-    <button class="modal-btn">종료하고 진짜 훈련하러 가기 GO!GO!</button>
-  </div>
+    <!-- dialog 기반 모달 -->
+    <dialog id="myDialog" class="modal-dialog" aria-labelledby="modal-title">
+      <div class="modal-container">
+        <h4 id="modal-title" class="a11y-hidden">응원 메시지</h4>
+        <div
+          class="cheering-text"
+          aria-label="화이팅! 당신의 꿈을 응원합니다!"
+        ></div>
+        <img
+          class="cheering-licat"
+          src="./images/라이캣-img.png"
+          alt="응원하는 모습의 라이캣 캐릭터"
+        />
+        <button id="closeBtn" class="modal-btn" type="button">
+          종료하고 진짜 훈련하러 가기 GO!GO!
+        </button>
+      </div>
+    </dialog>
+
+    <script>
+      const dialog = document.getElementById("myDialog");
+      const showDialogBtn = document.getElementById("showDialogBtn");
+      const closeBtn = document.getElementById("closeBtn");
+
+      showDialogBtn.addEventListener("click", () => dialog.showModal());
+      closeBtn.addEventListener("click", () => dialog.close());
+    </script>
+  </body>
 </html>
