@@ -1,5 +1,10 @@
-/* <-------- 모바일 버전(최대 너비 360px) ---------------> */
+/* <-------- 모바일 버전(최대 너비 576px) ---------------> */
 
+.container {
+  max-width: 576px;
+  width: calc(100% - 30px);
+  margin: 0 auto;
+}
 /* 타이틀 섹션 */
 .title-section {
   margin-top: 4rem;
@@ -22,8 +27,9 @@
 
 /* 설명 섹션 */
 .description {
+  width: calc(100% - 30px);
   max-width: 330px;
-  margin: 0 1.5rem 6rem;
+  margin: 0 auto 6rem;
   gap: 0;
 }
 
