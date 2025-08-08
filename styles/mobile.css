@@ -90,7 +90,7 @@
 /* 계산 섹션 */
 .calc-btn-container {
   gap: 4px;
-  margin-top: 6.8rem;
+  position: relative;
 }
 
 .calc-btn {
@@ -106,7 +106,7 @@
   text-align: center; /* 가운데 정렬 */
   word-break: keep-all;
   position: relative;
-  margin-top: 6rem;
+  margin-top: 6.8rem;
   padding: 2rem 3.8rem; /* 좌우 여백 */
 }
 
@@ -117,16 +117,18 @@
 
 .calc-btn::after {
   content: "";
-  display: block;
-  width: 43px;
-  height: 48px;
-  position: absolute;
-  right: -40px;
-  top: 50%;
-  transform: translateY(-50%);
+
   background-image: url("../images/icon.png");
   background-size: cover;
   background-repeat: no-repeat;
+
+  width: 43px;
+  height: 48px;
+  position: absolute;
+  /* 원래 계산하면 40이 맞는데... 레이아웃이 이상해서 임의의 값을 넣었음/top도 마찬가지 */
+  right: -45px;
+  top: 62px;
+  transform: translateY(-50%);
 }
 
 /* 결과 섹션 */
