@@ -219,9 +219,11 @@ body {
 
   gap: 10px;
   margin: 12rem auto 0; /* auto로 가로 중앙 정렬 */
+  /* 양쪽 여백  677px*/
+  max-width: 567px;
+  width: clamp(24rem, 54.7rem, 56.7rem);
 
-  width: 567px;
-  height: 64px;
+  height: auto;
   padding: 20px 50px;
 
   background: #fcee21;
@@ -235,6 +237,7 @@ body {
   font-size: 24px;
   color: var(--bg-purple);
   text-align: center;
+  letter-spacing: -0.03em;
 }
 .calc-btn::after {
   content: "";
@@ -285,6 +288,17 @@ body {
   line-height: 7.2rem;
 }
 
+@media screen and (min-width: 579px) and (max-width: 799px) {
+  .result {
+    gap: 0;
+  }
+  .result-row {
+    font-size: 2rem;
+  }
+  .result .highlight {
+    font-size: 3rem;
+  }
+}
 /* CTA 버튼 */
 .cta-btn {
   max-width: 570px;
@@ -389,13 +403,18 @@ body {
   background: #fff;
   border-radius: 20px;
   box-shadow: 4px 4px 30px 0px #00000026;
-  padding: 8rem 14.6rem;
+  width: clamp(48rem, 56vw, 80rem);
+  /* 패딩도 유동화 */
+  padding: clamp(2.4rem, 4vw, 8rem) clamp(2.4rem, 7vw, 14.6rem);
+  /* 너무 낮은 화면에서 잘리면 스크롤 */
+  max-height: calc(100vh - 3.2rem);
+  /* width: clamp(300px, 41.6667vw, 800px); */
 }
 .cheering-text {
   background: url("../images/modal-text.png") no-repeat center;
   background-size: cover;
-  width: 39.6rem;
-  height: 15rem;
+  width: clamp(20rem, 20.625vw, 39.6rem); /* 1920px 기준 39.6rem = 396px */
+  aspect-ratio: 396 / 150; /* 가로:세로 비율 유지 */
   margin: 0 auto;
 }
 
@@ -405,10 +424,11 @@ body {
     background-size: cover;
   }
 }
+
 .cheering-licat {
   margin-top: 4rem;
-  width: 43.8rem;
-  height: 34.2rem;
+  width: clamp(30rem, 22.8125vw, 43.8rem); /* 최소 300px, 최대 438px */
+  height: clamp(23rem, 17.8125vw, 34.2rem); /* 최소 230px, 최대 342px */
 }
 
 .modal-btn {
@@ -417,16 +437,26 @@ body {
   justify-content: center;
   align-items: center;
 
-  width: 50.8rem;
-  height: 6.4rem;
   background: #fcee21;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.15);
   border-radius: 1.2rem;
   font-weight: 500;
-  font-size: 2.4rem;
+
   line-height: 2.4rem;
   color: var(--bg-purple);
   border: none;
   cursor: pointer;
-  margin-top: 6rem;
+  /* 1920px에선 24rem, 화면이 줄면 최대 20rem까지 자연 축소 (컨테이너 넘치지 않게 100% 제한) */
+  width: min(100%, clamp(20rem, 34.7vw, 50.8rem));
+
+  /* 1920px 7.2rem → 576px 근처에선 ~5.6rem까지 축소 */
+  height: clamp(5.6rem, 9.7vw, 6.4rem);
+
+  /* 좌우/상하 패딩도 함께 유동화 */
+  /* padding: clamp(1.2rem, 2vw, 2rem) clamp(2rem, 3.5vw, 4.45rem); */
+
+  font-size: clamp(1.4rem, 1.1rem + 0.677vw, 2.4rem);
+  font-family: "GmarketSans", sans-serif;
+  word-break: keep-all;
+  margin: 6rem auto 0; /* 가운데 정렬 */
 }
