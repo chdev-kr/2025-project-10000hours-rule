@@ -58,6 +58,8 @@
 │   ├── reset.css           # CSS 리셋
 │   ├── style.css           # 메인 스타일
 │   └── mobile.css          # 모바일 스타일
+├── js/
+│   └── modal.js            # 모달 기능 JavaScript
 ├── images/
 │   ├── title.png           # 타이틀 이미지
 │   ├── quote.png           # 인용구 이미지
@@ -151,6 +153,30 @@ font-size: clamp(1.4rem, 2.5vw, 1.8rem);
 ```
 
 ### 3. 모달 시스템
+
+**HTML 구조:**
+
+```html
+<dialog id="myDialog" class="modal-dialog" aria-labelledby="modal-title">
+  <div class="modal-container">
+    <h4 id="modal-title" class="a11y-hidden">응원 메시지</h4>
+    <div
+      class="cheering-text"
+      aria-label="화이팅! 당신의 꿈을 응원합니다!"
+    ></div>
+    <img
+      class="cheering-licat"
+      src="./images/licat-img.png"
+      alt="응원하는 모습의 라이캣 캐릭터"
+    />
+    <button id="closeBtn" class="modal-btn" type="button">
+      종료하고 진짜 훈련하러 가기 GO!GO!
+    </button>
+  </div>
+</dialog>
+```
+
+**JavaScript (js/modal.js):**
 
 ```javascript
 const dialog = document.getElementById("myDialog");
@@ -299,7 +325,6 @@ padding: clamp(12px, 2.2vw, 32px) clamp(16px, 4vw, 32px);
 ### 4. 성능 최적화
 
 - 이미지 최적화 및 적절한 포맷 선택
-- CSS와 JavaScript 파일 분리로 유지보수성 향상
 - CSS와 JavaScript 파일 분리로 유지보수성 향상
 - **🚀 성능 최적화**: Lighthouse 모바일: **95점** | 데스크톱: **95점**
 

@@ -81,12 +81,12 @@ body {
 
 /* 타이틀 섹션 */
 .title-section {
-  margin-top: 12rem;
-  margin-bottom: 5.2rem;
+  max-width: 192rem;
+  margin: 12rem auto 5.2rem;
 }
 
 .title-section img {
-  max-width: 564px;
+  max-width: 56.4rem;
   width: 100%;
   height: auto;
   margin: 0 auto 5.2rem;
@@ -95,9 +95,9 @@ body {
 
 /* 인용구 */
 .quote-img {
-  width: 486px !important;
+  width: 48.6rem !important;
   height: auto;
-  max-width: 564px;
+  max-width: 56.4rem;
   margin: 0 auto;
   display: block;
 }
@@ -108,10 +108,10 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  max-width: 485px;
+  max-width: 48.5rem;
   margin: 8rem auto 8rem;
   gap: 2rem;
-  font-size: 24px;
+  font-size: 2.4rem;
   line-height: 100%;
 }
 
@@ -119,8 +119,8 @@ body {
 .description::before {
   content: "";
   display: inline-block;
-  width: 36px;
-  height: 32px;
+  width: 3.6rem;
+  height: 3.2rem;
 
   background-image: url("../images/left.png");
   background-size: contain;
@@ -130,8 +130,8 @@ body {
 .description::after {
   content: "";
   display: inline-block;
-  width: 36px;
-  height: 32px;
+  width: 3.6rem;
+  height: 3.2rem;
 
   background-image: url("../images/right.png");
   background-size: contain;
@@ -217,24 +217,24 @@ body {
   justify-content: center;
   align-items: center;
 
-  gap: 10px;
+  gap: 1rem;
   margin: 12rem auto 0; /* auto로 가로 중앙 정렬 */
   /* 양쪽 여백  677px*/
-  max-width: 567px;
+  max-width: 56.7rem;
   width: clamp(24rem, 54.7rem, 56.7rem);
 
   height: auto;
-  padding: 20px 50px;
+  padding: 2rem 5rem;
 
   background: #fcee21;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.15);
-  border-radius: 12px;
+  border-radius: 1.2rem;
   border: none;
   cursor: pointer;
 
   font-family: var(--font-main);
   font-weight: 500;
-  font-size: 24px;
+  font-size: 2.4rem;
   color: var(--bg-purple);
   text-align: center;
   letter-spacing: -0.03em;
@@ -242,22 +242,22 @@ body {
 .calc-btn::after {
   content: "";
   display: block;
-  width: 64px;
-  height: 72px;
+  width: 6.4rem;
+  height: 7.2rem;
 
   background-image: url("../images/icon.png");
   background-size: cover;
   background-repeat: no-repeat;
 
   position: absolute;
-  right: -71px; /* 버튼 오른쪽에 위치 */
+  right: -7.1rem; /* 버튼 오른쪽에 위치 */
   top: 1.4rem;
   margin-left: 0.7rem;
 }
 
 /* 결과 섹션 */
 .result {
-  max-width: 663px;
+  max-width: 66.3rem;
   margin: 14.2rem auto 5.2rem;
   display: flex;
   flex-direction: column;
@@ -288,7 +288,7 @@ body {
   line-height: 7.2rem;
 }
 
-@media screen and (min-width: 579px) and (max-width: 799px) {
+@media screen and (max-width: 799px) {
   .result {
     gap: 0;
   }
@@ -301,7 +301,7 @@ body {
 }
 /* CTA 버튼 */
 .cta-btn {
-  max-width: 570px;
+  max-width: 57rem;
   margin: 0 auto 8rem;
   display: flex;
   justify-content: center;
@@ -366,7 +366,7 @@ body {
   font-weight: 400;
   line-height: 1.2;
   color: var(--text-white);
-  max-width: 365px;
+  max-width: 36.5rem;
   margin: 0 auto;
   margin-bottom: 12rem;
 }
@@ -401,7 +401,7 @@ body {
 /* 모달 안 카드 스타일 */
 .modal-container {
   background: #fff;
-  border-radius: 20px;
+  border-radius: 2rem;
   box-shadow: 4px 4px 30px 0px #00000026;
   width: clamp(48rem, 56vw, 80rem);
   /* 패딩도 유동화 */

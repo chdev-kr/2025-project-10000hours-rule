@@ -1,18 +1,19 @@
 /* <-------- 모바일 버전(최대 너비 576px) ---------------> */
 
 .container {
-  max-width: 576px;
+  max-width: 57.6rem;
   width: calc(100% - 30px);
   margin: 0 auto;
 }
 /* 타이틀 섹션 */
 .title-section {
-  margin-top: 4rem;
-  margin-bottom: 3.2rem;
+  max-width: 57.6rem;
+  width: calc(100% - 30px);
+  margin: 4rem auto 3.2rem;
 }
 
 .title-section img {
-  width: 278px;
+  width: 27.8rem;
   height: auto;
   margin: 0 auto 3.2rem;
   display: block;
@@ -20,7 +21,7 @@
 
 /* 인용구 */
 .quote-img {
-  width: 297px !important;
+  width: 29.7rem !important;
   height: auto;
   margin-bottom: 3.2rem;
 }
@@ -28,28 +29,28 @@
 /* 설명 섹션 */
 .description {
   width: calc(100% - 30px);
-  max-width: 330px;
+  max-width: 33rem;
   margin: 0 auto 6rem;
   gap: 0;
 }
 
 /* 양쪽 따옴표 */
 .description::before {
-  width: 20px;
-  height: 18px;
+  width: 2rem;
+  height: 1.8rem;
 }
 
 .description::after {
-  width: 20px;
-  height: 18px;
+  width: 2rem;
+  height: 1.8rem;
 }
 .description p {
-  max-width: 290px;
-  font-size: 13px;
+  max-width: 29rem;
+  font-size: 1.3rem;
 }
 
 .description p .highlight {
-  font-size: 14px;
+  font-size: 1.4rem;
 }
 
 /* 폼 섹션 */
@@ -122,12 +123,12 @@
   background-size: cover;
   background-repeat: no-repeat;
 
-  width: 43px;
-  height: 48px;
+  width: 4.3rem;
+  height: 4.8rem;
   position: absolute;
   /* 원래 계산하면 40이 맞는데... 레이아웃이 이상해서 임의의 값을 넣었음/top도 마찬가지 */
-  right: -45px;
-  top: 62px;
+  right: -4.5rem;
+  top: 6.2rem;
   transform: translateY(-50%);
 }
 
@@ -152,21 +153,21 @@
 .result-row p {
   display: inline;
   margin: 0;
-  font-size: 12px;
+  font-size: 1.2rem;
   font-weight: 400;
 }
 
 .result-row .highlight {
   display: inline;
   margin: 0;
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: 700;
   line-height: 1;
 }
 
 /* CTA 버튼 */
 .cta-btn {
-  max-width: 313px;
+  max-width: 31.3rem;
   margin: 0 auto 6rem;
   font-weight: 500;
   gap: 0.8rem;
@@ -197,7 +198,7 @@
 }
 
 .footer-logo {
-  width: 118.24px;
+  width: 11.824rem;
   height: auto;
   margin-bottom: 1.2rem;
 }
