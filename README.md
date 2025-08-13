@@ -216,7 +216,39 @@ closeBtn.addEventListener("click", () => dialog.close());
 - `<nav>`, `<section>`, `<article>` 등 의미있는 태그 사용
 - `aria-labelledby`, `aria-describedby` 속성으로 연결
 
-### 2. 스크린 리더 지원
+### 2. HTML Role 속성 활용
+
+**WAI-ARIA Role 속성을 통한 웹 접근성 향상:**
+
+```html
+<!-- 모달 다이얼로그에 role 속성 적용 -->
+<dialog id="myDialog" class="modal-dialog" aria-labelledby="modal-title">
+  <div class="modal-container">
+    <h4 id="modal-title" class="a11y-hidden">응원 메시지</h4>
+    <div
+      class="cheering-text"
+      aria-label="화이팅! 당신의 꿈을 응원합니다!"
+    ></div>
+    <img
+      class="cheering-licat"
+      src="./images/licat-img.png"
+      alt="응원하는 모습의 라이캣 캐릭터"
+    />
+    <button id="closeBtn" class="modal-btn" type="button">
+      종료하고 진짜 훈련하러 가기 GO!GO!
+    </button>
+  </div>
+</dialog>
+```
+
+**적용된 Role 속성들:**
+
+- **`aria-labelledby`**: 모달 제목과 연결하여 스크린 리더가 모달의 목적을 인식
+- **`aria-label`**: 배경 이미지 텍스트에 대한 설명 제공
+- **`aria-hidden`**: 시각적으로만 보이는 장식 요소를 스크린 리더에서 제외
+- **`dialog`**: HTML5 네이티브 다이얼로그 요소로 모달의 역할 명시
+
+### 3. 스크린 리더 지원
 
 ```html
 <!-- 스크린 리더 전용 설명 -->
@@ -228,7 +260,7 @@ closeBtn.addEventListener("click", () => dialog.close());
 }
 ```
 
-### 3. 이미지 대체 텍스트
+### 4. 이미지 대체 텍스트
 
 ```html
 <img src="./images/licat-img.png" alt="응원하는 모습의 라이캣 캐릭터" />
@@ -286,7 +318,7 @@ padding: clamp(12px, 2.2vw, 32px) clamp(16px, 4vw, 32px);
 <img src="./images/decoration.png" alt="" aria-hidden="true" />
 ```
 
-### 4. 반응형 디자인 관련 에러
+### 3. 반응형 디자인 관련 에러
 
 #### 문제: 모바일에서 레이아웃이 깨지는 현상
 
@@ -304,7 +336,7 @@ gap: clamp(12px, 3vw, 40px);
 padding: clamp(12px, 2.2vw, 32px) clamp(16px, 4vw, 32px);
 ```
 
-### 5. 이미지 품질 관련 에러
+### 4. 이미지 품질 관련 에러
 
 #### 문제: 고해상도 디스플레이에서 이미지가 깨지는 현상
 
@@ -386,9 +418,40 @@ padding: clamp(12px, 2.2vw, 32px) clamp(16px, 4vw, 32px);
 - **로딩 성능 향상**: 로컬 파일로 빠른 폰트 로딩
 - **오프라인 지원**: 인터넷 연결 없이도 폰트 정상 표시
 - **폰트 가중치 체계화**: Bold, Regular, Medium, Light 등 체계적 관리
-- **font-display: swap**: 폰트 로딩 중에도 텍스트 표시로 사용자 경험 향상
 
-### 6. 코드리뷰의 중요성
+### 6. 텍스트 이미지 활용 전략
+
+**사용 빈도가 낮은 폰트의 효율적 처리:**
+
+특정 텍스트가 한 번만 사용되거나 사용 빈도가 매우 낮은 경우, 폰트 파일을 다운로드하는 것보다 이미지로 처리하는 것이 더 효율적입니다.
+
+```css
+/* 모달 응원 메시지를 이미지로 처리 */
+.cheering-text {
+  background: url("../images/modal-text.png") no-repeat center;
+  background-size: cover;
+  width: clamp(20rem, 20.625vw, 39.6rem);
+  aspect-ratio: 396 / 150;
+  margin: 0 auto;
+}
+
+/* 고해상도 디스플레이 대응 */
+@media (min-width: 800px) {
+  .cheering-text {
+    background-image: url("../images/modal-text-2x.png");
+    background-size: cover;
+  }
+}
+```
+
+**텍스트 이미지 사용의 장점:**
+
+- **폰트 파일 로딩 시간 단축**: 사용 빈도가 낮은 폰트 파일 다운로드 불필요
+- **네트워크 요청 감소**: 폰트 파일 대신 이미지 하나로 처리하여 HTTP 요청 최소화
+- **초기 렌더링 속도 향상**: 폰트 로딩 대기 시간 없이 즉시 텍스트 표시
+- **디자인 정확성**: 디자이너가 의도한 정확한 폰트 스타일 보장
+
+### 7. 코드리뷰의 중요성
 
 - 코드리뷰를 통해 잠재적인 버그와 개선점을 발견할 수 있었음
 - 다른 개발자의 관점에서 코드를 바라보는 것의 가치를 깨달음
