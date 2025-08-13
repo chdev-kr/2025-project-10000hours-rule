@@ -1,10 +1,6 @@
 /* <-------- 모바일 버전(최대 너비 576px) ---------------> */
 
-.container {
-  max-width: 57.6rem;
-  width: calc(100% - 3rem);
-  margin: 0 auto;
-}
+/* =========== header ===================================*/
 /* 타이틀 섹션 */
 .title-section {
   max-width: 57.6rem;
@@ -24,6 +20,13 @@
   width: 29.7rem !important;
   height: auto;
   margin-bottom: 3.2rem;
+}
+
+/* =========== main ===================================*/
+.container {
+  max-width: 57.6rem;
+  width: calc(100% - 3rem);
+  margin: 0 auto;
 }
 
 /* 설명 섹션 */
@@ -53,7 +56,7 @@
   font-size: 1.4rem;
 }
 
-/* 폼 섹션 */
+/* <-------- 폼 섹션 ------------> */
 .form-section {
   margin: 0 auto 6.8rem;
 }
@@ -62,9 +65,12 @@
   display: flex;
   font-size: 1.4rem;
   gap: 0.8rem;
+  /* 자동 줄 바꿈 */
   flex-wrap: wrap;
   margin-bottom: 0;
 }
+
+/* for="time" 속성을 가진 label 요소 */
 .form-row label[for="time"] {
   width: 100%;
   display: block;
@@ -88,7 +94,7 @@
   height: 3.8rem;
 }
 
-/* 계산 섹션 */
+/* <-------- 계산 섹션 ------------> */
 .calc-btn-container {
   gap: 0.4rem;
   position: relative;
@@ -105,6 +111,7 @@
   font-size: 1.4rem;
   line-height: 1.4; /* 줄 간격 */
   text-align: center; /* 가운데 정렬 */
+  /* 한글 줄바꿈(단어 단위) */
   word-break: keep-all;
   position: relative;
   margin-top: 6.8rem;
@@ -126,13 +133,13 @@
   width: 4.3rem;
   height: 4.8rem;
   position: absolute;
-  /* 원래 계산하면 40이 맞는데... 레이아웃이 이상해서 임의의 값을 넣었음/top도 마찬가지 */
   right: -4.5rem;
   top: 6.2rem;
+  /* 위쪽으로 50% 이동 */
   transform: translateY(-50%);
 }
 
-/* 결과 섹션 */
+/* <-------- 결과 섹션 ------------> */
 .result {
   display: block;
   margin: 6.8rem 3.7rem 5.2rem;
@@ -192,7 +199,7 @@
   height: 4.6rem;
 }
 
-/* 푸터 */
+/* =========== footer ===================================*/
 .footer {
   margin: 6rem auto 4.8rem;
 }
@@ -207,6 +214,8 @@
   font-size: 0.9rem;
   line-height: 1.5;
 }
+
+/* =========== modal(모달창) ===================================*/
 .modal {
   position: fixed;
   top: 0;
