@@ -2,13 +2,13 @@
 
 .container {
   max-width: 57.6rem;
-  width: calc(100% - 30px);
+  width: calc(100% - 3rem);
   margin: 0 auto;
 }
 /* 타이틀 섹션 */
 .title-section {
   max-width: 57.6rem;
-  width: calc(100% - 30px);
+  width: calc(100% - 3rem);
   margin: 4rem auto 3.2rem;
 }
 
@@ -28,7 +28,7 @@
 
 /* 설명 섹션 */
 .description {
-  width: calc(100% - 30px);
+  width: calc(100% - 3rem);
   max-width: 33rem;
   margin: 0 auto 6rem;
   gap: 0;
@@ -90,7 +90,7 @@
 
 /* 계산 섹션 */
 .calc-btn-container {
-  gap: 4px;
+  gap: 0.4rem;
   position: relative;
 }
 

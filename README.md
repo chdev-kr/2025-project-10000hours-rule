@@ -190,12 +190,12 @@ closeBtn.addEventListener("click", () => dialog.close());
 ### 4. 시맨틱 HTML 구조
 
 ```html
-<main class="container">
-  <header class="title-section">
-    <h1 class="a11y-hidden">1만 시간의 법칙</h1>
-    <!-- 타이틀 이미지 -->
-  </header>
+<header class="title-section">
+  <h1 class="a11y-hidden">1만 시간의 법칙</h1>
+  <!-- 타이틀 이미지 -->
+</header>
 
+<main class="container">
   <section class="description">
     <h2 class="a11y-hidden">1만 시간의 법칙 설명</h2>
     <!-- 설명 내용 -->
@@ -304,6 +304,41 @@ gap: clamp(12px, 3vw, 40px);
 padding: clamp(12px, 2.2vw, 32px) clamp(16px, 4vw, 32px);
 ```
 
+### 5. 이미지 품질 관련 에러
+
+#### 문제: 고해상도 디스플레이에서 이미지가 깨지는 현상
+
+**에러 상황**: 레티나 디스플레이나 고해상도 모니터에서 텍스트 이미지가 흐릿하게 표시됨
+
+**해결 방법**: 2배 해상도 이미지 적용
+
+```css
+/* 기본 이미지 */
+.cheering-text {
+  background: url("../images/modal-text.png") no-repeat center;
+  background-size: cover;
+  width: clamp(20rem, 20.625vw, 39.6rem);
+  aspect-ratio: 396 / 150;
+  margin: 0 auto;
+}
+
+/* 고해상도 디스플레이 대응 */
+@media (min-width: 800px) {
+  .cheering-text {
+    background-image: url("../images/modal-text-2x.png");
+    background-size: cover;
+  }
+}
+```
+
+**해결 효과:**
+
+- **선명한 텍스트**: 고해상도 디스플레이에서도 깨끗한 텍스트 표시
+- **자동 전환**: 화면 크기에 따라 적절한 해상도 이미지 자동 선택
+- **사용자 경험 향상**: 모든 디바이스에서 최적의 이미지 품질 제공
+- **폰트 파일 로딩 시간 단축**: 사용 빈도가 낮은 폰트 파일 다운로드 불필요
+- **네트워크 요청 감소**: 폰트 파일 대신 이미지 하나로 처리하여 HTTP 요청 최소화
+
 ## 개발하며 느낀점
 
 ### 1. CSS 코드 축소의 중요성
@@ -328,41 +363,30 @@ padding: clamp(12px, 2.2vw, 32px) clamp(16px, 4vw, 32px);
 - CSS와 JavaScript 파일 분리로 유지보수성 향상
 - **🚀 성능 최적화**: Lighthouse 모바일: **95점** | 데스크톱: **95점**
 
-### 5. 텍스트 이미지 활용의 장점
+### 5. 웹폰트 최적화
 
-**적용 사례**:
-사용 빈도가 적은 특수한 폰트 스타일의 텍스트는 폰트 파일을 다운로드하는 대신 이미지로 처리했습니다.
+**로컬 폰트 사용의 장점:**
 
 ```css
-.cheering-text {
-  background: url("../images/modal-text.png") no-repeat center;
-  background-size: cover;
-  width: clamp(20rem, 20.625vw, 39.6rem);
-  aspect-ratio: 396 / 150; /* 가로:세로 비율 유지 */
-  margin: 0 auto;
+@font-face {
+  font-family: "GmarketSans";
+  src: url("../fonts/GmarketSansLight.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
 }
 
-/* 고해상도 디스플레이 대응 */
-@media (min-width: 800px) {
-  .cheering-text {
-    background-image: url("../images/modal-text-2x.png");
-    background-size: cover;
-  }
+@font-face {
+  font-family: "Noto Sans KR";
+  src: url("../fonts/NotoSansKR-VariableFont_wght.ttf") format("truetype");
+  font-display: swap;
 }
 ```
 
-**텍스트 이미지 사용의 장점:**
-
-- **폰트 로딩 최적화**: 사용 빈도가 적은 폰트 파일 다운로드 불필요
-- **디자인 정확성**: 디자이너가 의도한 정확한 폰트 스타일 보장
-- **크로스 브라우저 호환성**: 모든 브라우저에서 동일한 모습으로 표시
-- **성능 향상**: 폰트 파일 로딩 시간 단축
-
-**고해상도 디스플레이 대응:**
-
-- **2배 이미지 적용**: `@media (min-width: 800px)`에서 고해상도 이미지로 전환
-- **선명한 텍스트**: 레티나 디스플레이 등에서도 깨끗한 텍스트 표시
-- **반응형 처리**: 화면 크기에 따라 적절한 해상도 이미지 자동 선택
+- **외부 의존성 제거**: CDN 폰트 로딩 실패 위험 없음
+- **로딩 성능 향상**: 로컬 파일로 빠른 폰트 로딩
+- **오프라인 지원**: 인터넷 연결 없이도 폰트 정상 표시
+- **폰트 가중치 체계화**: Bold, Regular, Medium, Light 등 체계적 관리
+- **font-display: swap**: 폰트 로딩 중에도 텍스트 표시로 사용자 경험 향상
 
 ### 6. 코드리뷰의 중요성
 
