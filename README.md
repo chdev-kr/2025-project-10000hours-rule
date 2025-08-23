@@ -33,7 +33,7 @@
 - **반응형 디자인**: 데스크톱, 태블릿, 모바일 환경 지원
 - **모달 시스템**: 응원 메시지 및 라이캣 캐릭터 모달
 - **웹 접근성**: 스크린 리더 지원 및 키보드 네비게이션
-- **1만 시간 계산기**: 분야와 시간 입력을 통한 일수 계산 (추후 구현 예정)
+- **1만 시간 계산기**: 분야와 시간 입력을 통한 일수 계산 ✅
 
 ## 기술 스택
 
@@ -47,6 +47,9 @@
   - DOM 조작
   - 이벤트 리스너
   - 모달 기능
+  - 입력값 검증
+  - 실시간 계산 및 결과 표시
+  - 키보드 이벤트 처리
 - **명명법**: 카멜 케이스 (camelCase) - 단어 사이를 대문자로 연결하여 가독성을 높이고 일관성 있는 클래스명 사용
 
 ## 📁 프로젝트 구조
@@ -59,7 +62,8 @@
 │   ├── style.css           # 메인 스타일
 │   └── mobile.css          # 모바일 스타일
 ├── js/
-│   └── modal.js            # 모달 기능 JavaScript
+│   ├── modal.js            # 모달 기능 JavaScript
+│   └── script.js           # 1만 시간 계산기 JavaScript
 ├── images/
 │   ├── title.png           # 타이틀 이미지
 │   ├── quote.png           # 인용구 이미지
@@ -100,6 +104,17 @@
 - [x] 이미지 요소의 반응형 처리
 - [x] 적절한 대체 텍스트(alt) 제공
 - [x] 키보드 접근성 확인
+
+### 3단계: JavaScript 기능 구현 (3일차)
+
+- [x] 1만 시간 계산기 JavaScript 구현
+- [x] DOM 요소 선택 및 이벤트 리스너 등록
+- [x] 입력값 검증 로직 구현
+- [x] 실시간 계산 및 결과 표시
+- [x] 키보드 이벤트 지원 (Enter 키)
+- [x] 로딩 상태 및 버튼 활성화/비활성화
+- [x] 천 단위 쉼표 표시 기능
+- [x] 시각적 피드백 및 사용자 경험 향상
 
 ## 와이어프레임 / UI
 
@@ -185,6 +200,141 @@ const closeBtn = document.getElementById("closeBtn");
 
 showDialogBtn.addEventListener("click", () => dialog.showModal());
 closeBtn.addEventListener("click", () => dialog.close());
+```
+
+### 5. 1만 시간 계산기 기능
+
+**HTML 구조:**
+
+```html
+<form>
+  <div class="form-row">
+    <label for="field">나는</label>
+    <input type="text" id="field" placeholder="예)프로그래밍" />
+    <p class="normal-text">전문가가 될 것이다.</p>
+  </div>
+
+  <div class="form-row">
+    <label for="time">그래서 앞으로 매일 하루에</label>
+    <input type="number" id="time" placeholder="예)5시간" />
+    <p class="normal-text">시간씩 훈련할 것이다.</p>
+  </div>
+
+  <button type="button" class="calc-btn">
+    나는 며칠 동안 훈련을 해야 1만 시간이 될까?
+  </button>
+</form>
+
+<div class="result">
+  <div class="result-row">
+    <p>
+      당신은 <strong id="result-text">프로그래밍</strong> 전문가가 되기 위해서
+    </p>
+  </div>
+  <div class="result-row">
+    <p>
+      대략 <strong id="result-time">5110</strong>일 이상 훈련하셔야 합니다! :)
+    </p>
+  </div>
+</div>
+```
+
+**JavaScript (js/script.js):**
+
+```javascript
+// DOM 요소 선택
+const fieldInput = document.getElementById("field");
+const timeInput = document.getElementById("time");
+const resultText = document.getElementById("result-text");
+const resultTime = document.getElementById("result-time");
+const calButton = document.querySelector(".calc-btn");
+
+// 페이지 로드 시 버튼 비활성화
+calButton.disabled = true;
+
+// 계산 버튼 클릭 이벤트
+calButton.addEventListener("click", () => {
+  // 로딩 상태 시작
+  calButton.innerHTML = "계산 중...";
+  calButton.disabled = true;
+
+  // 입력값 가져오기
+  const fieldValue = fieldInput.value.trim();
+  const timeNumber = Number(timeInput.value);
+
+  // 입력값 검증
+  if (!fieldValue) {
+    alert("분야를 입력해주세요.");
+    calButton.innerHTML =
+      '<span class="enter">나는 며칠 동안 훈련을 해야 1만 시간이 될까?</span>';
+    calButton.disabled = false;
+    return;
+  }
+
+  if (isNaN(timeNumber) || timeNumber <= 0) {
+    alert("올바른 시간을 입력해주세요.");
+    calButton.innerHTML =
+      '<span class="enter">나는 며칠 동안 훈련을 해야 1만 시간이 될까?</span>';
+    calButton.disabled = false;
+    return;
+  }
+
+  // 계산 로직
+  const totalHours = 10000;
+  const dayNeeded = Math.ceil(totalHours / timeNumber);
+  const formattedDayNeeded = dayNeeded.toLocaleString();
+
+  // 결과 표시
+  resultText.textContent = fieldValue;
+  resultTime.textContent = formattedDayNeeded;
+
+  // 시각적 피드백
+  resultText.style.color = "#007bff";
+  resultTime.style.color = "#007bff";
+
+  setTimeout(() => {
+    resultText.style.color = "";
+    resultTime.style.color = "";
+  }, 2000);
+
+  // 입력 필드 초기화
+  fieldInput.value = "";
+  timeInput.value = "";
+
+  // 로딩 상태 종료
+  setTimeout(() => {
+    calButton.innerHTML =
+      '<span class="enter">나는 며칠 동안 훈련을 해야 1만 시간이 될까?</span>';
+    calButton.disabled = false;
+  }, 500);
+});
+
+// 키보드 이벤트 추가
+timeInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    calButton.click();
+  }
+});
+
+// 실시간 입력값 검증
+function validateInputs() {
+  const fieldValue = fieldInput.value.trim();
+  const timeValue = timeInput.value;
+
+  const hasField = fieldValue && fieldValue.trim() !== "";
+  const hasTime = timeValue && timeValue.trim() !== "";
+  const isTimeValid = !isNaN(Number(timeValue)) && Number(timeValue) > 0;
+
+  if (hasField && hasTime && isTimeValid) {
+    calButton.disabled = false;
+  } else {
+    calButton.disabled = true;
+  }
+}
+
+// 입력할 때마다 검사
+fieldInput.addEventListener("input", validateInputs);
+timeInput.addEventListener("input", validateInputs);
 ```
 
 ### 4. 시맨틱 HTML 구조
@@ -451,7 +601,40 @@ padding: clamp(12px, 2.2vw, 32px) clamp(16px, 4vw, 32px);
 - **초기 렌더링 속도 향상**: 폰트 로딩 대기 시간 없이 즉시 텍스트 표시
 - **디자인 정확성**: 디자이너가 의도한 정확한 폰트 스타일 보장
 
-### 7. 코드리뷰의 중요성
+### 7. JavaScript 개발 경험
+
+**DOM 조작과 이벤트 처리의 중요성:**
+
+```javascript
+// 실시간 입력값 검증으로 사용자 경험 향상
+fieldInput.addEventListener("input", validateInputs);
+timeInput.addEventListener("input", validateInputs);
+```
+
+- **실시간 피드백**: 사용자가 입력하는 즉시 버튼 상태 변경
+- **접근성 고려**: Enter 키 이벤트로 키보드 사용자 지원
+- **에러 처리**: 명확한 검증 로직으로 사용자 혼란 방지
+
+**숫자 처리와 포맷팅:**
+
+```javascript
+// Math.ceil()로 소수점 올림 처리
+const dayNeeded = Math.ceil(totalHours / timeNumber);
+
+// toLocaleString()으로 천 단위 쉼표 표시
+const formattedDayNeeded = dayNeeded.toLocaleString();
+```
+
+- **정확한 계산**: 소수점 올림으로 정확한 일수 제공
+- **가독성**: 큰 숫자의 천 단위 쉼표 표시로 읽기 쉬운 결과
+
+**코드 구조화와 가독성:**
+
+- 단계별 주석으로 코드 흐름 명확화
+- 검증 → 계산 → 표시 → 정리 순서의 체계적 구현
+- 함수 분리로 재사용성과 유지보수성 향상
+
+### 8. 코드리뷰의 중요성
 
 - 코드리뷰를 통해 잠재적인 버그와 개선점을 발견할 수 있었음
 - 다른 개발자의 관점에서 코드를 바라보는 것의 가치를 깨달음
@@ -459,22 +642,27 @@ padding: clamp(12px, 2.2vw, 32px) clamp(16px, 4vw, 32px);
 
 ## 🔮 추후 구현 사항
 
-### 1. 1만 시간 계산기 기능
+### 1. 고급 기능
 
-현재는 정적인 결과만 표시되지만, 추후 다음과 같은 기능을 구현할 예정
+#### ✅ 완료된 기능
 
-#### 입력 검증
+(8/23)
 
-- 분야 입력 필드: 빈 값 체크, 특수문자 제한
-- 시간 입력 필드: 숫자만 입력 가능, 1-24시간 범위 제한
+- 입력값 검증 (빈 값 체크, 숫자 타입 검증)
+- 실시간 계산 및 결과 표시
+- 키보드 이벤트 지원 (Enter 키)
+- 로딩 상태 표시
+- 천 단위 쉼표 표시
+- 실시간 버튼 활성화/비활성화
 
-#### 계산 로직
+#### 📋 추후 구현 예정
 
-#### 동적 결과 표시
-
-- 입력값에 따른 실시간 결과 업데이트
-- 애니메이션 효과와 함께 결과 표시
 - 결과 저장 및 히스토리 기능
+- 다양한 시간 단위 표시 (년, 월, 일)
+- 목표 달성 날짜 계산
+- 진행률 바 표시
+- 소셜 공유 기능
+- 로컬 스토리지를 활용한 데이터 저장
 
 ## 참고자료
 
