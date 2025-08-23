@@ -281,6 +281,11 @@ body {
   line-height: 100%;
   color: var(--text-white);
 }
+.result-number {
+  font-weight: bold;
+  color: #007bff;
+  font-size: 1.2em;
+}
 
 .result .highlight {
   font-size: 7.2rem;
