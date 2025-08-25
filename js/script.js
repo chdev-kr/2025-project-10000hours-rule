@@ -7,8 +7,55 @@ const timeInput = document.getElementById("time");
 
 const resultText = document.getElementById("result-text");
 const resultTime = document.getElementById("result-time");
+const resultSection = document.querySelector(".result");
 
 const calButton = document.querySelector(".calc-btn");
+
+// 숫자 카운팅 애니메이션 함수
+function animateNumber(element, targetNumber, duration = 2000) {
+  const startNumber = 0;
+  const startTime = performance.now();
+  let lastNumber = -1; // 마지막으로 표시된 숫자
+
+  // 쉼표 제거 후 숫자로 변환
+  const cleanTarget = parseInt(targetNumber.replace(/,/g, ""));
+
+  function updateNumber(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+
+    // easeOutQuart 이징 함수 적용 (부드러운 감속)
+    const easeProgress = 1 - Math.pow(1 - progress, 4);
+
+    const currentNumber = Math.floor(
+      startNumber + (cleanTarget - startNumber) * easeProgress
+    );
+
+    // 숫자가 변경되었을 때만 업데이트 및 깜빡임 효과
+    if (currentNumber !== lastNumber) {
+      // 천 단위 쉼표 추가
+      const formattedNumber = currentNumber.toLocaleString();
+      element.textContent = formattedNumber;
+
+      // 깜빡임 효과 추가
+      element.classList.remove("number-counting");
+      element.offsetHeight; // 강제 리플로우
+      element.classList.add("number-counting");
+
+      lastNumber = currentNumber;
+    }
+
+    if (progress < 1) {
+      requestAnimationFrame(updateNumber);
+    } else {
+      // 최종값으로 정확히 설정
+      element.textContent = targetNumber;
+      element.classList.remove("number-counting");
+    }
+  }
+
+  requestAnimationFrame(updateNumber);
+}
 
 // 페이지 로드 시 버튼 비활성화
 calButton.disabled = true;
@@ -46,11 +93,39 @@ calButton.addEventListener("click", () => {
   const dayNeeded = Math.ceil(totalHours / timeNumber);
   const formattedDayNeeded = dayNeeded.toLocaleString();
 
-  // 5. 결과 표시
-  resultText.textContent = fieldValue;
-  resultTime.textContent = formattedDayNeeded;
+  // 5. 결과 표시 (애니메이션 효과 추가)
+  // 기존 애니메이션 클래스 제거
+  resultSection.classList.remove("result-animate");
+  resultText.classList.remove("result-text-animate");
+  resultTime.classList.remove("result-time-animate");
 
-  // 6. 시각적 피드백
+  // 결과 텍스트 업데이트
+  resultText.textContent = fieldValue;
+
+  // 숫자 카운팅 애니메이션 시작 (0부터 시작)
+  resultTime.textContent = "0";
+
+  // 강제로 리플로우를 발생시켜 애니메이션 재실행
+  resultSection.offsetHeight;
+  resultText.offsetHeight;
+  resultTime.offsetHeight;
+
+  // 애니메이션 클래스 추가 (순차적으로 실행)
+  resultSection.classList.add("result-animate");
+
+  // 약간의 지연 후 개별 요소 애니메이션
+  setTimeout(() => {
+    resultText.classList.add("result-text-animate");
+  }, 200);
+
+  // 숫자 카운팅 애니메이션 시작 (0.8초 후)
+  setTimeout(() => {
+    resultTime.classList.add("result-time-animate");
+    // 숫자 카운팅 애니메이션 실행
+    animateNumber(resultTime, formattedDayNeeded, 2000);
+  }, 800);
+
+  // 6. 시각적 피드백 (색상 변경)
   resultText.style.color = "#007bff";
   resultTime.style.color = "#007bff";
 

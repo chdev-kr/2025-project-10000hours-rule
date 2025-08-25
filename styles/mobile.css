@@ -172,6 +172,88 @@
   line-height: 1;
 }
 
+/* 모바일에서도 애니메이션 효과 적용 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.result-animate {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.result-text-animate {
+  animation: scaleIn 0.6s ease-out;
+}
+
+.result-time-animate {
+  animation: bounceIn 0.8s ease-out;
+}
+
+/* 숫자 카운팅 애니메이션 */
+@keyframes countUp {
+  from {
+    content: "0";
+  }
+  to {
+    content: attr(data-target);
+  }
+}
+
+.counting-animation {
+  animation: countUp 2s ease-out;
+}
+
+/* 숫자 카운팅 시 깜빡임 효과 */
+@keyframes numberBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.number-counting {
+  animation: numberBlink 0.1s ease-in-out;
+}
+
 /* CTA 버튼 */
 .cta-btn {
   max-width: 31.3rem;
