@@ -2,6 +2,11 @@
 
 1만 시간의 법칙을 테마로 한 반응형 웹 애플리케이션입니다. 웹 접근성을 고려한 시맨틱 HTML과 CSS를 활용하여 구현했습니다.
 
+## 🔗 링크
+
+- **GitHub Repository**: https://github.com/chdev-kr/2025-project-10000hours-rule/
+- **Live Demo**: https://chdev-kr.github.io/2025-project-10000hours-rule/
+
 ## 목차
 
 - [프로젝트 소개](#프로젝트-소개)
@@ -52,7 +57,7 @@
   - 키보드 이벤트 처리
 - **명명법**: 카멜 케이스 (camelCase) - 단어 사이를 대문자로 연결하여 가독성을 높이고 일관성 있는 클래스명 사용
 
-## 📁 프로젝트 구조
+## 프로젝트 구조
 
 ```
 2025-project-10000hours-rule/
@@ -78,7 +83,7 @@
 └── README.md              # 프로젝트 문서
 ```
 
-## 📅 개발 일정
+## 개발 일정
 
 ### 1단계: 데스크톱 버전 작업 (1일차)
 
@@ -116,7 +121,7 @@
 - [x] 천 단위 쉼표 표시 기능
 - [x] 시각적 피드백 및 사용자 경험 향상
 
-## 와이어프레임 / UI
+## 화면 설계도
 
 ### 데스크톱 | 모바일 버전
 
@@ -141,9 +146,9 @@ git clone https://github.com/your-username/2025-project-10000hours-rule.git
 cd 2025-project-10000hours-rule
 ```
 
-## 🌐 배포 링크
+## 배포 링크
 
-**Live Demo**: [https://chaehyeon119.github.io/2025-project-10000hours-rule/](https://chaehyeon119.github.io/2025-project-10000hours-rule/)
+**Live Demo**: https://chdev-kr.github.io/2025-project-10000hours-rule/
 
 ## 주요 구현 사항
 
@@ -642,9 +647,8 @@ const formattedDayNeeded = dayNeeded.toLocaleString();
 
 ## 🔮 추후 구현 사항
 
-### 1. 고급 기능
 
-#### ✅ 완료된 기능
+#### ✅ 업데이트 완료된 기능
 
 (8/23)
 
@@ -655,24 +659,11 @@ const formattedDayNeeded = dayNeeded.toLocaleString();
 - 천 단위 쉼표 표시
 - 실시간 버튼 활성화/비활성화
 
-#### 📋 추후 구현 예정
-
-- 결과 저장 및 히스토리 기능
-- 다양한 시간 단위 표시 (년, 월, 일)
-- 목표 달성 날짜 계산
-- 진행률 바 표시
-- 소셜 공유 기능
-- 로컬 스토리지를 활용한 데이터 저장
-
 ## 참고자료
 
 - [MDN Web Docs - WAI-ARIA Roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles)
 - [인프런] 아는 만큼 보이는 웹 접근성 WCAG
 
-## 🔗 링크
-
-- **GitHub Repository**: [https://github.com/chaehyeon119/2025-project-10000hours-rule](https://github.com/chaehyeon119/2025-project-10000hours-rule)
-- **Live Demo**: [https://chaehyeon119.github.io/2025-project-10000hours-rule/](https://chaehyeon119.github.io/2025-project-10000hours-rule/)
 
 ---
 
